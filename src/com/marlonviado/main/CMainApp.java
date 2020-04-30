@@ -13,21 +13,21 @@ import com.marlonviado.concrete.CTask;
 import com.marlonviado.concrete.CProcess;
 
 public class CMainApp {
-	
+
 	public static void main(String[] args) throws ParseException {
 		List<CTask> taskList = new ArrayList<>();
 		int taskCounter=1;
 		List<CTask> strSubList=null;
-		
+
 		/*
 		 * Set of schedule for every task
 		 * The Date Format should always be (mm-dd-yyyy)
 		 */
-		
-		CSchedule[] schedule = {new CSchedule("01-02-2002","01-06-2002"), 
-		 						new CSchedule("01-09-2002","01-13-2002"), 
-		 						new CSchedule("01-01-2002","01-03-2002"), 
-		 						new CSchedule("01-06-2002","01-08-2002"), 
+
+		CSchedule[] schedule = {new CSchedule("01-02-2002","01-06-2002"),
+		 						new CSchedule("01-09-2002","01-13-2002"),
+		 						new CSchedule("01-01-2002","01-03-2002"),
+		 						new CSchedule("01-06-2002","01-08-2002"),
 		 						new CSchedule("01-08-2002","01-10-2002")};
 
 		int p=10;
@@ -52,9 +52,9 @@ public class CMainApp {
 			p-=2;
 			taskCounter++;
 		}
-		
+
 		Collections.sort(taskList);
-		
+
 		System.out.printf("PROJECT PLAN SCHEDULE AND TASK\n");
 		System.out.printf("------------------------------\n");
 		for(int i=0; i<taskList.size(); i++) {
@@ -71,11 +71,11 @@ public class CMainApp {
 				}
 			}
 		}
-		
+
 		System.out.printf("\nSTARTED AND COMPLETED TASK\n");
 		System.out.printf("--------------------------\n");
 		String noSubTask="";
-		
+
 		for(CTask t: taskList) {
 			String subTask = t.getName();
 			if(subTask.contains("Blank")) {
@@ -89,7 +89,7 @@ public class CMainApp {
 				}
 				else if(subTask.length()>=6){
 					if(noSubTask.length()<=0) {
-						
+
 					}
 					else {
 						CProcess process = new CProcess(noSubTask,t,t.getPriority());
@@ -97,12 +97,14 @@ public class CMainApp {
 						process.start();
 						noSubTask="";
 					}
-					
+
 				}
-				
+
 			}
 
 		}
+
+		System.out.println("BYE...");
 
 	}
 
